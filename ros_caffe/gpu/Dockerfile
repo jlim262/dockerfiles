@@ -25,8 +25,8 @@ RUN rosdep init \
 # install ros packages
 ENV ROS_DISTRO kinetic
 RUN apt-get update && apt-get install -y \
-    ros-kinetic-desktop-full=1.3.0-0* \
-    && rm -rf /var/lib/apt/lists/*
+    ros-kinetic-desktop-full && \
+    rm -rf /var/lib/apt/lists/*
 
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
