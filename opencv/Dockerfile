@@ -4,11 +4,9 @@
 FROM ubuntu:14.04
 LABEL maintainer "JongYoon Lim<jongyoon@apache.org>"
 
-ENV OPENCV_VER 3.2.0
-
 RUN mkdir ~/opencv
-RUN cd ~/opencv && git clone https://github.com/Itseez/opencv_contrib.git && cd opencv_contrib && git checkout ${OPENCV_VER}
-RUN cd ~/opencv && git clone https://github.com/Itseez/opencv.git && cd opencv && git checkout ${OPENCV_VER}
+RUN cd ~/opencv && git clone https://github.com/Itseez/opencv_contrib.git && cd opencv_contrib && git checkout 3.2.0
+RUN cd ~/opencv && git clone https://github.com/Itseez/opencv.git && cd opencv && git checkout 3.2.0
 
 RUN cd ~/opencv/opencv && mkdir release && cd release && \
          cmake -D CMAKE_BUILD_TYPE=RELEASE \
