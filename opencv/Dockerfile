@@ -21,7 +21,7 @@ RUN apt-get install -y --no-install-recommends \
   libjasper-dev \
   yasm \
   libavformat-dev \
-  libpq-dev
+  libpq-dev \
   wget && \
   rm -rf /var/lib/apt/lists/*
 
