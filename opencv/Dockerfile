@@ -4,6 +4,27 @@
 FROM ubuntu:14.04
 LABEL maintainer "JongYoon Lim<jongyoon@apache.org>"
 
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+  build-essential \
+	cmake \
+  git \
+  pkg-config \
+  libswscale-dev \
+	python3-dev \
+  python3-numpy \
+	libtbb2 \
+  libtbb-dev \
+  libjpeg-dev \
+	libpng-dev \
+  libtiff-dev \
+  libjasper-dev \
+  yasm \
+  libavformat-dev \
+  libpq-dev
+  wget && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN mkdir ~/opencv
 RUN cd ~/opencv && git clone https://github.com/Itseez/opencv_contrib.git && cd opencv_contrib && git checkout 3.2.0
 RUN cd ~/opencv && git clone https://github.com/Itseez/opencv.git && cd opencv && git checkout 3.2.0
