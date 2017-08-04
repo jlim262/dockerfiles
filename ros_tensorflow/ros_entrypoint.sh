@@ -15,8 +15,7 @@ if [ $(dpkg-query -W -f='${Status}' cheese 2>/dev/null | grep -c "ok installed")
   yes | /tmp/pylon-5.0.5.9000-x86_64/setup-usb.sh
 fi
 
-cd ~/catkin_ws && catkin_make
-
+# for ros environment
 if [ -e /opt/ros/kinetic/setup.bash ] ; then
   if ! grep -Fxq "/opt/ros/kinetic/setup.bash" ~/.bashrc ; then
     source '/opt/ros/kinetic/setup.bash' >> ~/.bashrc
