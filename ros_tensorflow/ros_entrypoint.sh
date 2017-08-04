@@ -3,7 +3,7 @@ set -e
 
 # setup ros environment
 echo "ros-kinetic with tensorflow, gpu supported"
-echo "[pychrm] pychrm > /dev/null 2>&1 &"
+echo "[pycharm] pychrm > /dev/null 2>&1 &"
 echo "[clion] clion > /dev/null 2>&1 &"
 echo "[jupyter] jupyter notebook --allow-root"
 echo "[pylonviewer] pylonviewer"
@@ -18,16 +18,18 @@ fi
 # for ros environment
 if [ -e /opt/ros/kinetic/setup.bash ] ; then
   if ! grep -Fxq "/opt/ros/kinetic/setup.bash" ~/.bashrc ; then
-    source '/opt/ros/kinetic/setup.bash' >> ~/.bashrc
+    echo "source '/opt/ros/kinetic/setup.bash'" >> ~/.bashrc
   fi
+  echo "setup.bash"
   source "/opt/ros/kinetic/setup.bash"
+  cd /root/catkin_ws && catkin_make
 fi
 
-if [ -e ~/catkin_ws/devel/setup.bash ] ; then
-  if ! grep -Fxq "~/catkin_ws/devel/setup.bash" ~/.bashrc ; then
-    source '~/catkin_ws/devel/setup.bash' >> ~/.bashrc
+if [ -e /root/catkin_ws/devel/setup.bash ] ; then
+  if ! grep -Fxq "/root/catkin_ws/devel/setup.bash" ~/.bashrc ; then
+    echo "source '/root/catkin_ws/devel/setup.bash'" >> ~/.bashrc
   fi
-  source "~/catkin_ws/devel/setup.bash"
+  source "/root/catkin_ws/devel/setup.bash"
 fi
 
 # for displying qt gui

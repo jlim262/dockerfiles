@@ -7,7 +7,7 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --fix-missing \
       build-essential autoconf automake git \
-      wget usbutils unzip \
+      wget usbutils unzip vim \
       software-properties-common libxext-dev libxrender-dev libxslt1.1 libxtst-dev libgtk2.0-0 libcanberra-gtk-module \
       locales && \
       locale-gen en_US.UTF-8
