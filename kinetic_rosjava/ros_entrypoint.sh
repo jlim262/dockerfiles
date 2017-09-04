@@ -2,18 +2,10 @@
 set -e
 
 # setup ros environment
-echo "ros-kinetic with tensorflow, gpu supported"
-echo "[pycharm] pychrm > /dev/null 2>&1 &"
-echo "[clion] clion > /dev/null 2>&1 &"
-echo "[jupyter] jupyter notebook --allow-root"
-echo "[pylonviewer] pylonviewer"
-
-# to setup pylon sdk, cheese needs to be setup after login.
-if [ $(dpkg-query -W -f='${Status}' cheese 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
-  echo "please wait until initial configuration will be done."
-  apt-get update -qq && apt-get install -qqy cheese;
-  yes | /tmp/pylon-5.0.5.9000-x86_64/setup-usb.sh
-fi
+echo "[ROS] ros-kinetic, oracle-java7, rosjava"
+echo "[IDE] idea, clion, pycharm"
+echo "[Alias] cm:catkin_make cw:catkin_ws"
+echo "Modify ROS_HOSTNAME in /root/.bashrc to your IP address and execute 'source ~/.bashrc'"
 
 # for ros environment
 if [ -e /opt/ros/kinetic/setup.bash ] ; then
@@ -21,7 +13,10 @@ if [ -e /opt/ros/kinetic/setup.bash ] ; then
     echo "source '/opt/ros/kinetic/setup.bash'" >> ~/.bashrc
   fi
   source "/opt/ros/kinetic/setup.bash"
-  cd /root/catkin_ws && catkin_make
+  if ! [ -e /root/catkin_ws/devel/setup.bash ] ; then
+    cd /root/catkin_ws && catkin_make
+    cd ~
+  fi
 fi
 
 if [ -e /root/catkin_ws/devel/setup.bash ] ; then
